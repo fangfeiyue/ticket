@@ -1,6 +1,5 @@
 import React, { useState, useRef, useEffect, memo, useCallback } from 'react';
 import './App.css';
-import './reduce.js'
 import {
   createSet,
   createAdd,
@@ -18,6 +17,37 @@ function bindActionCreators(actionCreators, dispatch) {
     };
   }
   return ret;
+}
+
+function reducer(state, action) {
+  const { type, payload } = action;
+  const { todos, count } = state;
+  switch(type) {
+    case 'set':
+      return {
+        ...state,
+        todos: payload,
+        count: count + 1
+      };
+    case 'add':
+      return {
+        ...state,
+        todos: [...todos, payload],
+        count: count + 1
+      };
+    case 'remove':
+      return {
+        ...state,
+        todos: todos.filter(todo=>todo.id !== payload)
+      };
+    case 'toggle':
+      return {
+        ...state,
+        todos: todos.map(todo => todo.id === payload ? { ...todo, complete: !todo.complete } : todo)
+      };
+    default:
+      return state;
+  }
 }
 
 const Control = memo(function Control(props) {
