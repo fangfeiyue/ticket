@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "dayjs": "^1.8.13",
+    "express": "^4.16.4",
+    "mocker-api": "^1.7.4",
     "@babel/core": "7.7.4",
     "@svgr/webpack": "4.3.3",
     "@testing-library/jest-dom": "^4.2.4",
@@ -75,7 +78,9 @@
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "test": "node scripts/test.js"
+    "test": "node scripts/test.js",
+    "server": "pm2 start server/index.js -n mocker",
+    "stop": "pm2 delete mocker"
   },
   "eslintConfig": {
     "extends": "react-app",
