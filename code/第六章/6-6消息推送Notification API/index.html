@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./index.css">
+</head>
+<body>
+  <h1>hello pwa</h1>
+  <script>
+    if('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('./sw.js', {scope: '/'}).then(registeration => console.log('ok', registeration), err => console.log('err', err));
+    }else {
+      console.log('浏览器不支持service worker')
+    };
+
+    
+    // console.log(Notification.permission)
+    // Notification.requestPermission().then(permission=>console.log(permission))
+    // console.log(Notification.permission)
+    // // 弹出通知内容
+    // new Notification('hello world', {body: 'hi'})
+  </script>
+</body>
+</html>
