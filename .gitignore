@@ -3,3 +3,10 @@
 node_modules
 build
 dist
+._*
+*.swp
+*.pyc
+node-debug.log
+npm-debug.log
+bower_components
+.svn
